@@ -58,11 +58,26 @@ public class DataResolveTest {
     }
 
     public static void main(String[] args) {
+        jt808();
         header();
         c2();
         c1();
         c3();
         c11();
+    }
+
+    public static void jt808() {
+        byte[] fe2800C2s = hexToByteArray("7E02000026123456789012007E000000010000000200BA7F0E07E4F11C0028003C00001810151010100104000000640202007D137E");
+        String s = byte2HexStr(fe2800C2s);
+        String s2 = DataTypeUtil.byte2HexStr(fe2800C2s[3]);
+        System.out.println("1");
+        XResolver deserializeXResolver = new XResolver(ByteOrder.BIG_ENDIAN);
+
+        JT808Bean foo = null;
+        foo = deserializeXResolver.fromBytes(fe2800C2s, JT808Bean.class);
+
+        System.out.println("Taira deserialize result: " + String.valueOf(foo));
+
     }
 
     public static void header() {
